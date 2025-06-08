@@ -1,2 +1,0 @@
-# EduTech
-proyecto_web
