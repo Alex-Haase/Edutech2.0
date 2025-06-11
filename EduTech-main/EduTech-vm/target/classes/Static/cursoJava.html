@@ -1,501 +1,82 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productos | YSE Educación Digital</title>
-    <style>
-        :root {
-            --primary: #2C3E50;
-            --secondary: #E74C3C;
-            --accent: #3498DB;
-            --light: #ECF0F1;
-            --dark: #1A252F;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--light);
-            color: var(--dark);
-            line-height: 1.6;
-        }
-        header {
-            background: linear-gradient(135deg, var(--primary), var(--dark));
-            padding: 40px 20px;
-            color: white;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        .logo {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: white;
-        }
-        .logo span {
-            color: var(--accent);
-        }
-        nav {
-            background-color: var(--primary);
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        nav a {
-            color: white;
-            padding: 18px 25px;
-            text-decoration: none;
-            display: block;
-            transition: all 0.3s;
-            font-weight: 500;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-        }
-        nav a:hover {
-            background-color: var(--secondary);
-        }
-        .content {
-            padding: 50px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .hero {
-            text-align: center;
-            padding: 60px 20px;
-            background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.9)), url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            border-radius: 8px;
-            margin-bottom: 40px;
-        }
-        .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-        }
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 30px;
-        }
-        .btn {
-            display: inline-block;
-            background-color: var(--secondary);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-        .btn:hover {
-            background-color: #C0392B;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        .btn-outline {
-            background: transparent;
-            border: 2px solid white;
-            margin-left: 15px;
-        }
-        .btn-outline:hover {
-            background: white;
-            color: var(--secondary);
-        }
-        .section-title {
-            color: var(--primary);
-            border-bottom: 3px solid var(--accent);
-            padding-bottom: 10px;
-            display: inline-block;
-            margin-bottom: 30px;
-            font-size: 2rem;
-        }
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin: 60px 0;
-        }
-        .feature-card {
-            background: white;
-            padding: 40px 30px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            text-align: center;
-            transition: all 0.3s;
-        }
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-        .feature-icon {
-            font-size: 3rem;
-            color: var(--accent);
-            margin-bottom: 20px;
-        }
-        .products-section {
-            margin: 80px 0;
-        }
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        .product-card {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: all 0.3s;
-            position: relative;
-        }
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-        .product-image {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
-        .product-info {
-            padding: 20px;
-        }
-        .product-category {
-            color: var(--secondary);
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-        }
-        .product-title {
-            color: var(--primary);
-            margin: 10px 0;
-            font-size: 1.2rem;
-        }
-        .product-description {
-            color: #555;
-            margin-bottom: 15px;
-            font-size: 0.95rem;
-        }
-        .product-price {
-            font-weight: 700;
-            color: var(--primary);
-            font-size: 1.2rem;
-            margin: 15px 0;
-        }
-        .add-to-cart {
-            width: 100%;
-            padding: 10px;
-            background-color: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .add-to-cart:hover {
-            background-color: #2980B9;
-        }
-        .testimonials {
-            background: var(--primary);
-            color: white;
-            padding: 60px 20px;
-            margin: 60px 0;
-            border-radius: 8px;
-        }
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        .testimonial-card {
-            background: rgba(255,255,255,0.1);
-            padding: 30px;
-            border-radius: 8px;
-        }
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 20px;
-        }
-        .testimonial-author {
-            font-weight: 600;
-        }
-        footer {
-            background-color: var(--dark);
-            color: white;
-            text-align: center;
-            padding: 30px 20px;
-            margin-top: 60px;
-        }
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-        .footer-links a {
-            color: var(--light);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        .footer-links a:hover {
-            color: var(--accent);
-        }
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            nav a {
-                padding: 15px 20px;
-                font-size: 0.8rem;
-            }
-            .btn-outline {
-                margin-left: 0;
-                margin-top: 15px;
-            }
-        }
-        #carrito-icono {
-            position: relative;
-            display: flex;
-            align-items: center;
-            color: white;
-        }
-
-        #contador-carrito {
-            background-color: var(--secondary);
-            border-radius: 50%;
-            padding: 3px 7px;
-            font-size: 0.75rem;
-            margin-left: 5px;
-        }
-        
-        /* Filtros de productos */
-        .filters {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-        .filter-btn {
-            padding: 8px 20px;
-            background: white;
-            border: 1px solid var(--primary);
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .filter-btn:hover, .filter-btn.active {
-            background: var(--primary);
-            color: white;
-        }
-    </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Java Básico | EduTech</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+    }
+    header {
+      background-color: #007BFF;
+      padding: 20px;
+      color: white;
+      text-align: center;
+    }
+    .container {
+      max-width: 800px;
+      margin: 2rem auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    img {
+      max-width: 100%;
+      height: 200px;
+      object-fit: contain;
+      margin-bottom: 20px;
+    }
+    h1 {
+      color: #333;
+    }
+    .btn-volver {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.5rem 1rem;
+      background-color: #007BFF;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+    .btn-volver:hover {
+      background-color: #0056b3;
+    }
+  </style>
 </head>
 <body>
 
 <header>
-    <div class="logo">Y<span>SE</span></div>
-    <button onclick="cerrarSesion()" class="btn btn-outline-danger mt-4">Cerrar Sesión</button>
-    <p>Transformando la educación digital en Chile</p>
+  <h1>Java Básico</h1>
 </header>
 
-<nav>
-    <a href="index.html">Inicio</a>
-    <a href="cursos.html">Cursos</a>
-    <a href="nosotros.html">Nosotros</a>
-    <a href="contacto.html">Contacto</a>
-    <a href="blog.html">Blog</a>
-    <a href="productos.html" class="active">Productos</a>
-    <a href="carrito.html" id="carrito-icono">
-        <i class="fas fa-shopping-cart"></i>
-        <span id="contador-carrito">0</span>
-    </a>
-</nav>
+<div class="container">
+  <img src="https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg" alt="Logo Java">
 
-<div class="content">
-    <section class="hero">
-        <h1>Nuestros Productos Educativos</h1>
-        <p>Descubre materiales didácticos, libros digitales y herramientas diseñadas para potenciar tu aprendizaje y enseñanza.</p>
-        <div>
-            <a href="#productos-destacados" class="btn">Ver Productos</a>
-            <a href="#categorias" class="btn btn-outline">Explorar Categorías</a>
-        </div>
-    </section>
+  <h2>Descripción del curso</h2>
+  <p>Este curso introductorio te enseñará los conceptos esenciales del lenguaje de programación Java, orientado a objetos, sintaxis, clases y métodos.</p>
 
-    <section id="categorias">
-        <h2 class="section-title">Categorías</h2>
-        <div class="filters">
-            <button class="filter-btn active" data-category="all">Todos</button>
-            <button class="filter-btn" data-category="libros">Libros Digitales</button>
-            <button class="filter-btn" data-category="kits">Kits Educativos</button>
-            <button class="filter-btn" data-category="software">Software Educativo</button>
-            <button class="filter-btn" data-category="material">Material Didáctico</button>
-        </div>
-    </section>
+  <h2>¿Qué aprenderás?</h2>
+  <ul>
+    <li>Fundamentos de Java</li>
+    <li>Tipos de datos y estructuras de control</li>
+    <li>Programación orientada a objetos</li>
+    <li>Uso de clases y métodos</li>
+    <li>Compilación y ejecución de programas</li>
+  </ul>
 
-    <section id="productos-destacados" class="products-section">
-        <h2 class="section-title">Productos Destacados</h2>
-        <div class="product-grid">
-            <div class="product-card" data-category="libros">
-                <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Libro de Matemáticas" class="product-image">
-                <div class="product-info">
-                    <div class="product-category">Libro Digital</div>
-                    <h3 class="product-title">Matemáticas Avanzadas</h3>
-                    <p class="product-description">Guía completa de matemáticas para educación superior con ejercicios prácticos y soluciones.</p>
-                    <div class="product-price">$24.900</div>
-                    <button class="add-to-cart">Añadir al carrito</button>
-                </div>
-            </div>
-            
-            <div class="product-card" data-category="kits">
-                <img src="https://images.unsplash.com/photo-1596495577886-d920f1fb7238?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Kit de Ciencias" class="product-image">
-                <div class="product-info">
-                    <div class="product-category">Kit Educativo</div>
-                    <h3 class="product-title">Kit de Ciencias Básicas</h3>
-                    <p class="product-description">Todo lo necesario para realizar 50 experimentos científicos en casa o en el aula.</p>
-                    <div class="product-price">$39.900</div>
-                    <button class="add-to-cart">Añadir al carrito</button>
-                </div>
-            </div>
-            
-            <div class="product-card" data-category="software">
-                <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Software Educativo" class="product-image">
-                <div class="product-info">
-                    <div class="product-category">Software</div>
-                    <h3 class="product-title">Plataforma de Aprendizaje</h3>
-                    <p class="product-description">Licencia anual para nuestra plataforma con acceso a todos los cursos y materiales.</p>
-                    <div class="product-price">$89.900</div>
-                    <button class="add-to-cart">Añadir al carrito</button>
-                </div>
-            </div>
-            
-            <div class="product-card" data-category="material">
-                <img src="https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Tarjetas Educativas" class="product-image">
-                <div class="product-info">
-                    <div class="product-category">Material Didáctico</div>
-                    <h3 class="product-title">Tarjetas de Vocabulario</h3>
-                    <p class="product-description">Set de 200 tarjetas para aprendizaje de inglés básico e intermedio.</p>
-                    <div class="product-price">$18.900</div>
-                    <button class="add-to-cart">Añadir al carrito</button>
-                </div>
-            </div>
-            
-            <div class="product-card" data-category="libros">
-                <img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Libro de Historia" class="product-image">
-                <div class="product-info">
-                    <div class="product-category">Libro Digital</div>
-                    <h3 class="product-title">Historia Universal Contemporánea</h3>
-                    <p class="product-description">Análisis profundo de los eventos históricos del siglo XX y XXI.</p>
-                    <div class="product-price">$21.900</div>
-                    <button class="add-to-cart">Añadir al carrito</button>
-                </div>
-            </div>
-            
-            <div class="product-card" data-category="kits">
-                <img src="https://images.unsplash.com/photo-1581093450021-4a7360e9aab5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Kit de Robótica" class="product-image">
-                <div class="product-info">
-                    <div class="product-category">Kit Educativo</div>
-                    <h3 class="product-title">Kit de Robótica Educativa</h3>
-                    <p class="product-description">Introducción a la programación y robótica con proyectos prácticos.</p>
-                    <div class="product-price">$59.900</div>
-                    <button class="add-to-cart">Añadir al carrito</button>
-                </div>
-            </div>
-        </div>
-    </section>
+  <h2>Detalles</h2>
+  <p><strong>Duración:</strong> 4 semanas</p>
+  <p><strong>Inicio:</strong> 10 de junio de 2025</p>
+  <p><strong>Profesor:</strong> Juan Pérez</p>
+  <p><strong>Precio:</strong> $59.990</p>
 
-    <section class="testimonials">
-        <h2 style="text-align: center; margin-bottom: 40px; font-size: 2rem;">Opiniones de nuestros clientes</h2>
-        <div class="testimonial-grid">
-            <div class="testimonial-card">
-                <p class="testimonial-text">"Los materiales de YSE han sido fundamentales para complementar mi educación en casa. Calidad excelente a precios accesibles."</p>
-                <p class="testimonial-author">- María G., Estudiante</p>
-            </div>
-            <div class="testimonial-card">
-                <p class="testimonial-text">"Como docente, los kits educativos de YSE me han ayudado a hacer mis clases más interactivas y entretenidas para mis alumnos."</p>
-                <p class="testimonial-author">- Carlos R., Profesor</p>
-            </div>
-            <div class="testimonial-card">
-                <p class="testimonial-text">"La plataforma de aprendizaje es intuitiva y completa. Ha sido la mejor inversión para mi desarrollo profesional."</p>
-                <p class="testimonial-author">- Andrea L., Profesional</p>
-            </div>
-        </div>
-    </section>
+  <a href="cursos.html" class="btn-volver">← Volver a cursos</a>
 </div>
-
-<footer>
-    <div class="footer-links">
-        <a href="terminos.html">Términos de Servicio</a>
-        <a href="privacidad.html">Política de Privacidad</a>
-        <a href="preguntas.html">Preguntas Frecuentes</a>
-    </div>
-    <p>YSE &copy; 2023 - Todos los derechos reservados</p>
-    <p>Oficina Central: Providencia, Santiago de Chile</p>
-</footer>
-
-<script>
-    // Filtrado de productos
-    document.querySelectorAll('.filter-btn').forEach(button => {
-        button.addEventListener('click', () => {
-            // Remover clase active de todos los botones
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            // Añadir clase active al botón clickeado
-            button.classList.add('active');
-            
-            const category = button.dataset.category;
-            const products = document.querySelectorAll('.product-card');
-            
-            products.forEach(product => {
-                if (category === 'all' || product.dataset.category === category) {
-                    product.style.display = 'block';
-                } else {
-                    product.style.display = 'none';
-                }
-            });
-        });
-    });
-    
-    // Carrito de compras (funcionalidad básica)
-    let cartCount = 0;
-    const cartCounter = document.getElementById('contador-carrito');
-    
-    document.querySelectorAll('.add-to-cart').forEach(button => {
-        button.addEventListener('click', () => {
-            cartCount++;
-            cartCounter.textContent = cartCount;
-            
-            // Animación de feedback
-            button.textContent = '✓ Añadido';
-            button.style.backgroundColor = '#2ecc71';
-            
-            setTimeout(() => {
-                button.textContent = 'Añadir al carrito';
-                button.style.backgroundColor = '#3498DB';
-            }, 1500);
-        });
-    });
-    
-    function cerrarSesion() {
-        // Lógica para cerrar sesión
-        alert('Sesión cerrada con éxito');
-        window.location.href = 'index.html';
-    }
-</script>
 
 </body>
 </html>
