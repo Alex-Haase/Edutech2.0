@@ -3,80 +3,507 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Java Básico | EduTech</title>
+  <title>Java Básico | YSE</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
+    :root {
+      --primary: #2C3E50;
+      --secondary: #E74C3C;
+      --accent: #3498DB;
+      --light: #ECF0F1;
+      --dark: #1A252F;
+    }
+    
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f5f5f5;
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
     }
+    
     header {
-      background-color: #007BFF;
-      padding: 20px;
+      background: linear-gradient(135deg, var(--primary), var(--dark));
+      padding: 40px 20px;
       color: white;
       text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
-    .container {
-      max-width: 800px;
-      margin: 2rem auto;
-      background: white;
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    
+    .logo {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: white;
     }
-    img {
-      max-width: 100%;
-      height: 200px;
-      object-fit: contain;
+    
+    .logo span {
+      color: var(--accent);
+    }
+    
+    nav {
+      background-color: var(--primary);
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    nav a {
+      color: white;
+      padding: 18px 25px;
+      text-decoration: none;
+      display: block;
+      transition: all 0.3s;
+      font-weight: 500;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+    }
+    
+    nav a:hover {
+      background-color: var(--secondary);
+    }
+    
+    .course-container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    
+    .course-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .course-title {
+      color: var(--primary);
+      font-size: 2.5rem;
       margin-bottom: 20px;
     }
-    h1 {
-      color: #333;
+    
+    .course-image {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
     }
-    .btn-volver {
+    
+    .course-content {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 40px;
+    }
+    
+    .course-details {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    .course-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .course-info-card {
+      background: white;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    .course-info-card h3 {
+      color: var(--primary);
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 10px;
+      margin-top: 0;
+    }
+    
+    .info-item {
+      margin-bottom: 15px;
+    }
+    
+    .info-label {
+      font-weight: 600;
+      color: var(--primary);
+    }
+    
+    .btn {
       display: inline-block;
-      margin-top: 2rem;
-      padding: 0.5rem 1rem;
-      background-color: #007BFF;
+      background-color: var(--secondary);
       color: white;
+      padding: 12px 30px;
+      border-radius: 50px;
       text-decoration: none;
-      border-radius: 4px;
+      font-weight: 600;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      text-align: center;
     }
-    .btn-volver:hover {
-      background-color: #0056b3;
+    
+    .btn:hover {
+      background-color: #C0392B;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--secondary);
+      color: var(--secondary);
+      margin-left: 15px;
+    }
+    
+    .btn-outline:hover {
+      background: var(--secondary);
+      color: white;
+    }
+    
+    .module {
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .module-title {
+      color: var(--primary);
+      font-size: 1.3rem;
+    }
+    
+    .instructor-card {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    
+    .instructor-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    
+    .instructor-info h4 {
+      margin: 0;
+      color: var(--primary);
+    }
+    
+    .instructor-title {
+      color: var(--accent);
+      font-size: 0.9rem;
+      margin: 5px 0;
+    }
+    
+    .rating {
+      color: #FFC107;
+      margin: 10px 0;
+    }
+    
+    .price {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 20px 0;
+      text-align: center;
+    }
+    
+    .requirements-list {
+      padding-left: 20px;
+    }
+    
+    .requirements-list li {
+      margin-bottom: 8px;
+    }
+    
+    footer {
+      background-color: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 60px;
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .footer-links a {
+      color: var(--light);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+    
+    @media (max-width: 768px) {
+      .course-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .course-image {
+        height: 250px;
+      }
+      
+      .btn-outline {
+        margin-left: 0;
+        margin-top: 15px;
+      }
+    }
+    
+    #carrito-icono {
+      position: relative;
+      display: flex;
+      align-items: center;
+      color: white;
+    }
+    
+    #contador-carrito {
+      background-color: var(--secondary);
+      border-radius: 50%;
+      padding: 3px 7px;
+      font-size: 0.75rem;
+      margin-left: 5px;
+    }
+    
+    .highlight-box {
+      background-color: rgba(52, 152, 219, 0.1);
+      border-left: 4px solid var(--accent);
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 0 8px 8px 0;
+    }
+    
+    .tech-icon {
+      font-size: 2rem;
+      color: var(--accent);
+      margin-right: 10px;
+    }
+    
+    .tool-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-top: 15px;
+    }
+    
+    .tool-item {
+      display: flex;
+      align-items: center;
+    }
+    
+    .java-logo {
+      color: #f89820; /* Color naranja de Java */
     }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>Java Básico</h1>
+  <div class="logo">Y<span>SE</span></div>
+  <p>Transformando la educación digital en Chile</p>
 </header>
 
-<div class="container">
-  <img src="https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg" alt="Logo Java">
+<nav>
+  <a href="index.html">Inicio</a>
+  <a href="cursos.html">Cursos</a>
+  <a href="nosotros.html">Nosotros</a>
+  <a href="contacto.html">Contacto</a>
+  <a href="blog.html">Blog</a>
+  <a href="productos.html">Productos</a>
+  <a href="carrito.html" id="carrito-icono">
+    <i class="fas fa-shopping-cart"></i>
+    <span id="contador-carrito">0</span>
+  </a>
+</nav>
 
-  <h2>Descripción del curso</h2>
-  <p>Este curso introductorio te enseñará los conceptos esenciales del lenguaje de programación Java, orientado a objetos, sintaxis, clases y métodos.</p>
-
-  <h2>¿Qué aprenderás?</h2>
-  <ul>
-    <li>Fundamentos de Java</li>
-    <li>Tipos de datos y estructuras de control</li>
-    <li>Programación orientada a objetos</li>
-    <li>Uso de clases y métodos</li>
-    <li>Compilación y ejecución de programas</li>
-  </ul>
-
-  <h2>Detalles</h2>
-  <p><strong>Duración:</strong> 4 semanas</p>
-  <p><strong>Inicio:</strong> 10 de junio de 2025</p>
-  <p><strong>Profesor:</strong> Juan Pérez</p>
-  <p><strong>Precio:</strong> $59.990</p>
-
-  <a href="cursos.html" class="btn-volver">← Volver a cursos</a>
+<div class="course-container">
+  <div class="course-header">
+    <h1 class="course-title">Java Básico: Fundamentos de Programación</h1>
+    <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80" alt="Programación Java" class="course-image">
+  </div>
+  
+  <div class="course-content">
+    <div class="course-details">
+      <h2>Descripción del curso</h2>
+      <p>Domina los fundamentos de Java, uno de los lenguajes de programación más populares y demandados en la industria tecnológica. Este curso te guiará desde los conceptos básicos hasta la creación de tus primeros programas completos, sentando las bases para convertirte en un desarrollador Java profesional.</p>
+      
+      <div class="highlight-box">
+        <p><strong>¿Por qué aprender Java?</strong> Java es utilizado por millones de desarrolladores y ejecutado en miles de millones de dispositivos en todo el mundo. Es el lenguaje base para el desarrollo Android y se usa ampliamente en aplicaciones empresariales, sistemas embebidos y big data.</p>
+      </div>
+      
+      <h2>Lo que aprenderás</h2>
+      <div class="module">
+        <h3 class="module-title">Módulo 1: Introducción a Java</h3>
+        <ul>
+          <li>Historia y características de Java</li>
+          <li>Configuración del entorno de desarrollo (JDK, IDE)</li>
+          <li>Sintaxis básica y estructura de un programa Java</li>
+          <li>Compilación y ejecución de programas</li>
+        </ul>
+      </div>
+      
+      <div class="module">
+        <h3 class="module-title">Módulo 2: Fundamentos de Programación</h3>
+        <ul>
+          <li>Variables y tipos de datos</li>
+          <li>Operadores y expresiones</li>
+          <li>Estructuras de control (condicionales, bucles)</li>
+          <li>Manejo de excepciones básico</li>
+        </ul>
+      </div>
+      
+      <div class="module">
+        <h3 class="module-title">Módulo 3: Programación Orientada a Objetos</h3>
+        <ul>
+          <li>Clases y objetos</li>
+          <li>Métodos y constructores</li>
+          <li>Encapsulamiento, herencia y polimorfismo</li>
+          <li>Interfaces y clases abstractas</li>
+        </ul>
+      </div>
+      
+      <div class="module">
+        <h3 class="module-title">Módulo 4: Colecciones y Librerías</h3>
+        <ul>
+          <li>Arrays y ArrayList</li>
+          <li>Maps y Sets</li>
+          <li>Librerías estándar de Java</li>
+          <li>Manejo básico de archivos</li>
+        </ul>
+      </div>
+      
+      <div class="module">
+        <h3 class="module-title">Módulo 5: Proyecto Final</h3>
+        <p>Desarrollarás una aplicación de consola completa que integre todos los conceptos aprendidos, desde la estructura de clases hasta el manejo de datos. Este proyecto será el primer paso en tu portafolio como desarrollador Java.</p>
+      </div>
+      
+      <div style="text-align: center; margin-top: 40px;">
+        <a href="#" class="btn">Inscribirse en el curso</a>
+        <a href="cursos.html" class="btn btn-outline">Volver a cursos</a>
+      </div>
+    </div>
+    
+    <div class="course-sidebar">
+      <div class="course-info-card">
+        <h3>Detalles del curso</h3>
+        <div class="info-item">
+          <span class="info-label">Duración:</span> 6 semanas (30 horas)
+        </div>
+        <div class="info-item">
+          <span class="info-label">Inicio:</span> 10 de junio 2025
+        </div>
+        <div class="info-item">
+          <span class="info-label">Modalidad:</span> Online con sesiones en vivo
+        </div>
+        <div class="info-item">
+          <span class="info-label">Nivel:</span> Principiante
+        </div>
+        <div class="info-item">
+          <span class="info-label">Certificación:</span> Incluida (Oracle Certified Associate)
+        </div>
+        
+        <div class="price">$59.990</div>
+        <p style="text-align: center; font-size: 0.9rem; color: var(--secondary);">Pago único o 3 cuotas de $19.997</p>
+        <a href="#" class="btn">Comprar ahora</a>
+      </div>
+      
+      <div class="course-info-card">
+        <h3>Tecnologías que usarás</h3>
+        <div class="tool-list">
+          <div class="tool-item">
+            <i class="fab fa-java tech-icon java-logo"></i>
+            <span>Java SE</span>
+          </div>
+          <div class="tool-item">
+            <i class="fas fa-code tech-icon"></i>
+            <span>Eclipse/IntelliJ</span>
+          </div>
+          <div class="tool-item">
+            <i class="fas fa-cube tech-icon"></i>
+            <span>POO</span>
+          </div>
+          <div class="tool-item">
+            <i class="fas fa-database tech-icon"></i>
+            <span>Colecciones</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="course-info-card">
+        <h3>Requisitos</h3>
+        <ul class="requirements-list">
+          <li>Conocimientos básicos de informática</li>
+          <li>No se requiere experiencia previa en programación</li>
+          <li>Computadora con Windows, Mac o Linux</li>
+          <li>4GB de RAM mínimo (8GB recomendado)</li>
+          <li>10GB de espacio libre en disco</li>
+          <li>Disponibilidad de 6 horas semanales</li>
+        </ul>
+      </div>
+      
+      <div class="course-info-card">
+        <h3>Instructor</h3>
+        <div class="instructor-card">
+          <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Alexander Haase" class="instructor-avatar">
+          <div class="instructor-info">
+            <h4>Alexsander haase</h4>
+            <div class="instructor-title">Java Developer Senior</div>
+            <div class="rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <span>(328)</span>
+            </div>
+          </div>
+        </div>
+        <p>Con más de 10 años de experiencia desarrollando aplicaciones empresariales en Java, Alex ha trabajado en proyectos para grandes empresas en Chile y el extranjero. Certificado Oracle Professional y apasionado por enseñar programación.</p>
+      </div>
+      
+      <div class="course-info-card">
+        <h3>Beneficios adicionales</h3>
+        <ul class="requirements-list">
+          <li>Material de estudio descargable</li>
+          <li>Ejercicios prácticos con soluciones</li>
+          <li>Acceso a comunidad de estudiantes</li>
+          <li>Preparación para certificación Oracle</li>
+          <li>Sesiones de preguntas y respuestas</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
+
+<footer>
+  <div class="footer-links">
+    <a href="terminos.html">Términos de Servicio</a>
+    <a href="privacidad.html">Política de Privacidad</a>
+    <a href="preguntas.html">Preguntas Frecuentes</a>
+  </div>
+  <p>YSE &copy; 2023 - Todos los derechos reservados</p>
+  <p>Oficina Central: Providencia, Santiago de Chile</p>
+</footer>
+
+<!-- Vincula el script del carrito de compra -->
+<script src="js/app_ca.js"></script>
 
 </body>
 </html>
