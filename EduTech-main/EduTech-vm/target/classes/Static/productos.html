@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cursos | YSE Edutech</title>
+    <title>Productos | YSE Educación Digital</title>
     <style>
         :root {
             --primary: #2C3E50;
@@ -67,13 +67,14 @@
         .hero {
             text-align: center;
             padding: 60px 20px;
-            background-color: white;
+            background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.9)), url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             margin-bottom: 40px;
         }
         .hero h1 {
-            color: var(--primary);
             font-size: 2.8rem;
             margin-bottom: 20px;
         }
@@ -100,6 +101,15 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            margin-left: 15px;
+        }
+        .btn-outline:hover {
+            background: white;
+            color: var(--secondary);
+        }
         .section-title {
             color: var(--primary);
             border-bottom: 3px solid var(--accent);
@@ -108,81 +118,117 @@
             margin-bottom: 30px;
             font-size: 2rem;
         }
-        .course-grid {
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+        .feature-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+        .products-section {
+            margin: 80px 0;
+        }
+        .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 30px;
             margin-top: 40px;
         }
-        .course-card {
+        .product-card {
             background: white;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             transition: all 0.3s;
+            position: relative;
         }
-        .course-card:hover {
+        .product-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
         }
-        .course-image {
+        .product-image {
             width: 100%;
             height: 180px;
             object-fit: cover;
         }
-        .course-info {
+        .product-info {
             padding: 20px;
         }
-        .course-category {
+        .product-category {
             color: var(--secondary);
-            font-weight: 500;
+            font-weight: 600;
             font-size: 0.9rem;
             margin-bottom: 10px;
-            text-transform: uppercase;
         }
-        .course-title {
+        .product-title {
             color: var(--primary);
             margin: 10px 0;
             font-size: 1.2rem;
         }
-        .course-description {
+        .product-description {
             color: #555;
             margin-bottom: 15px;
             font-size: 0.95rem;
         }
-        .course-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 15px;
-        }
-        .course-price {
+        .product-price {
             font-weight: 700;
             color: var(--primary);
             font-size: 1.2rem;
+            margin: 15px 0;
         }
-        .course-duration {
-            color: #777;
-            font-size: 0.9rem;
-        }
-        .category-filter {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 30px;
-        }
-        .filter-btn {
-            padding: 8px 20px;
-            background: white;
-            border: 1px solid #ddd;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .filter-btn:hover, .filter-btn.active {
+        .add-to-cart {
+            width: 100%;
+            padding: 10px;
             background-color: var(--accent);
             color: white;
-            border-color: var(--accent);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .add-to-cart:hover {
+            background-color: #2980B9;
+        }
+        .testimonials {
+            background: var(--primary);
+            color: white;
+            padding: 60px 20px;
+            margin: 60px 0;
+            border-radius: 8px;
+        }
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .testimonial-card {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 8px;
+        }
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        .testimonial-author {
+            font-weight: 600;
         }
         footer {
             background-color: var(--dark);
@@ -214,13 +260,54 @@
                 padding: 15px 20px;
                 font-size: 0.8rem;
             }
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 15px;
+            }
+        }
+        #carrito-icono {
+            position: relative;
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+
+        #contador-carrito {
+            background-color: var(--secondary);
+            border-radius: 50%;
+            padding: 3px 7px;
+            font-size: 0.75rem;
+            margin-left: 5px;
+        }
+        
+        /* Filtros de productos */
+        .filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .filter-btn {
+            padding: 8px 20px;
+            background: white;
+            border: 1px solid var(--primary);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary);
+            color: white;
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
 <header>
     <div class="logo">Y<span>SE</span></div>
+    <button onclick="cerrarSesion()" class="btn btn-outline-danger mt-4">Cerrar Sesión</button>
     <p>Transformando la educación digital en Chile</p>
 </header>
 
@@ -230,67 +317,123 @@
     <a href="nosotros.html">Nosotros</a>
     <a href="contacto.html">Contacto</a>
     <a href="blog.html">Blog</a>
+    <a href="productos.html" class="active">Productos</a>
+    <a href="carrito.html" id="carrito-icono">
+        <i class="fas fa-shopping-cart"></i>
+        <span id="contador-carrito">0</span>
+    </a>
 </nav>
-
 
 <div class="content">
     <section class="hero">
-        <h1>Nuestros Cursos</h1>
-        <p>Descubre nuestra oferta educativa diseñada para potenciar tu desarrollo profesional en el mundo digital</p>
+        <h1>Nuestros Productos Educativos</h1>
+        <p>Descubre materiales didácticos, libros digitales y herramientas diseñadas para potenciar tu aprendizaje y enseñanza.</p>
+        <div>
+            <a href="#productos-destacados" class="btn">Ver Productos</a>
+            <a href="#categorias" class="btn btn-outline">Explorar Categorías</a>
+        </div>
     </section>
 
+    <section id="categorias">
+        <h2 class="section-title">Categorías</h2>
+        <div class="filters">
+            <button class="filter-btn active" data-category="all">Todos</button>
+            <button class="filter-btn" data-category="libros">Libros Digitales</button>
+            <button class="filter-btn" data-category="kits">Kits Educativos</button>
+            <button class="filter-btn" data-category="software">Software Educativo</button>
+            <button class="filter-btn" data-category="material">Material Didáctico</button>
+        </div>
+    </section>
 
-
-
-<div class="container-fluid py-5">
-        <h1 class="text-center mb-4">YSE | Educación Digital Accesible</h1>
-
-        <div class="card mb-4">
-            <div class="card-body">
-                <h4>Agregar un nuevo curso</h4>
-
-                <div class="row g-2">
-    <div class="col-12 col-md"><input class="form-control" type="text" id="titulo" placeholder="Título"></div>
-    <div class="col-12 col-md"><input class="form-control" type="text" id="descripcion" placeholder="Descripción"></div>
-    <div class="col-12 col-md"><input class="form-control" type="date" id="fechaInicio" placeholder="Fecha de inicio"></div>
-</div>
-
-    <div class="row g-2 mt-2">
-    <div class="col-12 col-md"><input class="form-control" type="date" id="fechaTermino" placeholder="Fecha de término"></div>
-    <div class="col-12 col-md"><input class="form-control" type="number" id="capacidad" placeholder="Capacidad"></div>
-    <div class="col-12 col-md"><input class="form-control" type="text" id="profesor" placeholder="Profesor"></div>
-</div>
-
-<div class="row g-2 mt-2"><div class="col-12 col-md"><input class="form-control" type="number" step="0.01" id="precio" placeholder="Precio"></div>
-    <div class="col-12 col-md d-grid"><button class="btn btn-success" id="botonFormulario" onclick="agregarCurso()">Agregar Curso</button></div>Add commentMore actions
-</div>
-
-
-<div class="card">
-            <div class="card-body">
-                <h4>Listado de Cursos</h4>
-                <button class="btn btn-primary mb-3" onclick="listarCursos()">🔄 Refrescar Lista</button>
-                <div class="table-responsive">
-                    <table class="table table-hover table-bordered" id="tablaCursos">
-                        <thead class="table-dark">
-                            <tr>
-                                <th>ID</th>
-                                <th>Título</th>
-                                <th>Descripcion</th>
-                                <th>FechaInicio</th>
-                                <th>FechaTermino</th>
-                                <th>Capacidad</th>
-                                <th>Profesor</th>
-                                <th>Precio</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>More actions
-                    </table>
+    <section id="productos-destacados" class="products-section">
+        <h2 class="section-title">Productos Destacados</h2>
+        <div class="product-grid">
+            <div class="product-card" data-category="libros">
+                <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Libro de Matemáticas" class="product-image">
+                <div class="product-info">
+                    <div class="product-category">Libro Digital</div>
+                    <h3 class="product-title">Matemáticas Avanzadas</h3>
+                    <p class="product-description">Guía completa de matemáticas para educación superior con ejercicios prácticos y soluciones.</p>
+                    <div class="product-price">$24.900</div>
+                    <button class="add-to-cart">Añadir al carrito</button>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="kits">
+                <img src="https://images.unsplash.com/photo-1596495577886-d920f1fb7238?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Kit de Ciencias" class="product-image">
+                <div class="product-info">
+                    <div class="product-category">Kit Educativo</div>
+                    <h3 class="product-title">Kit de Ciencias Básicas</h3>
+                    <p class="product-description">Todo lo necesario para realizar 50 experimentos científicos en casa o en el aula.</p>
+                    <div class="product-price">$39.900</div>
+                    <button class="add-to-cart">Añadir al carrito</button>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="software">
+                <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Software Educativo" class="product-image">
+                <div class="product-info">
+                    <div class="product-category">Software</div>
+                    <h3 class="product-title">Plataforma de Aprendizaje</h3>
+                    <p class="product-description">Licencia anual para nuestra plataforma con acceso a todos los cursos y materiales.</p>
+                    <div class="product-price">$89.900</div>
+                    <button class="add-to-cart">Añadir al carrito</button>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="material">
+                <img src="https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Tarjetas Educativas" class="product-image">
+                <div class="product-info">
+                    <div class="product-category">Material Didáctico</div>
+                    <h3 class="product-title">Tarjetas de Vocabulario</h3>
+                    <p class="product-description">Set de 200 tarjetas para aprendizaje de inglés básico e intermedio.</p>
+                    <div class="product-price">$18.900</div>
+                    <button class="add-to-cart">Añadir al carrito</button>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="libros">
+                <img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Libro de Historia" class="product-image">
+                <div class="product-info">
+                    <div class="product-category">Libro Digital</div>
+                    <h3 class="product-title">Historia Universal Contemporánea</h3>
+                    <p class="product-description">Análisis profundo de los eventos históricos del siglo XX y XXI.</p>
+                    <div class="product-price">$21.900</div>
+                    <button class="add-to-cart">Añadir al carrito</button>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="kits">
+                <img src="https://images.unsplash.com/photo-1581093450021-4a7360e9aab5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Kit de Robótica" class="product-image">
+                <div class="product-info">
+                    <div class="product-category">Kit Educativo</div>
+                    <h3 class="product-title">Kit de Robótica Educativa</h3>
+                    <p class="product-description">Introducción a la programación y robótica con proyectos prácticos.</p>
+                    <div class="product-price">$59.900</div>
+                    <button class="add-to-cart">Añadir al carrito</button>
                 </div>
             </div>
         </div>
+    </section>
 
-
+    <section class="testimonials">
+        <h2 style="text-align: center; margin-bottom: 40px; font-size: 2rem;">Opiniones de nuestros clientes</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Los materiales de YSE han sido fundamentales para complementar mi educación en casa. Calidad excelente a precios accesibles."</p>
+                <p class="testimonial-author">- María G., Estudiante</p>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Como docente, los kits educativos de YSE me han ayudado a hacer mis clases más interactivas y entretenidas para mis alumnos."</p>
+                <p class="testimonial-author">- Carlos R., Profesor</p>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"La plataforma de aprendizaje es intuitiva y completa. Ha sido la mejor inversión para mi desarrollo profesional."</p>
+                <p class="testimonial-author">- Andrea L., Profesional</p>
+            </div>
+        </div>
+    </section>
+</div>
 
 <footer>
     <div class="footer-links">
@@ -302,16 +445,56 @@
     <p>Oficina Central: Providencia, Santiago de Chile</p>
 </footer>
 
-
 <script>
-    // Filtrado de cursos por categoría
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            document.querySelector('.filter-btn.active').classList.remove('active');
-            this.classList.add('active');
-            // Aquí iría la lógica para filtrar los cursos
+    // Filtrado de productos
+    document.querySelectorAll('.filter-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            // Remover clase active de todos los botones
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Añadir clase active al botón clickeado
+            button.classList.add('active');
+            
+            const category = button.dataset.category;
+            const products = document.querySelectorAll('.product-card');
+            
+            products.forEach(product => {
+                if (category === 'all' || product.dataset.category === category) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
         });
     });
+    
+    // Carrito de compras (funcionalidad básica)
+    let cartCount = 0;
+    const cartCounter = document.getElementById('contador-carrito');
+    
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.addEventListener('click', () => {
+            cartCount++;
+            cartCounter.textContent = cartCount;
+            
+            // Animación de feedback
+            button.textContent = '✓ Añadido';
+            button.style.backgroundColor = '#2ecc71';
+            
+            setTimeout(() => {
+                button.textContent = 'Añadir al carrito';
+                button.style.backgroundColor = '#3498DB';
+            }, 1500);
+        });
+    });
+    
+    function cerrarSesion() {
+        // Lógica para cerrar sesión
+        alert('Sesión cerrada con éxito');
+        window.location.href = 'index.html';
+    }
 </script>
 
 </body>
